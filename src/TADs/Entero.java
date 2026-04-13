@@ -2,7 +2,9 @@ package TADs;
 
 public class Entero implements Operaciones{
     private int valor;
-
+    public Entero(){
+        this.valor=0;
+    }
     public int getValor() {
         return valor;
     }
