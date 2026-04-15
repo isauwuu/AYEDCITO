@@ -59,6 +59,6 @@ public class Racional implements Operaciones{
     public void esIgual(Object a,Object b){
         Racional a1 = (Racional) a;
         Racional b1 = (Racional) b;
-     
+
     }
 }
