@@ -46,6 +46,5 @@ public class Pila implements Contenedor{
             System.out.println("Error, pila vacia");
         return a;
     }
-    publi
-
+//    public
 }
