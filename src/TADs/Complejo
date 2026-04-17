@@ -1,0 +1,52 @@
+public class Complejo implements Operaciones{
+  private double pReal;
+  private double pImag;
+
+  public void setpReal(double a){
+    this.pReal=a;
+  }
+
+  public void setpImag(double a){
+    this.pImag=a;
+  }
+  public double getpReal(){
+    return this.pReal;
+  }
+  public double getPImag(){
+    return this.pImag;
+  }
+  public Complejo(double r,double i){
+    this.pReal=r;
+    this.pImag=i;
+  }
+  public void sumaComplejos(Complejo a,Complejo b){
+    this.pReal=a.pReal+b.pReal;
+    this.pImag=a.pImag+b.pImag;
+  }
+  public void restaCOmplejos(Complejo a,COmplejo b){
+    this.pReal=a.pReal-b.pReal;
+    this.pImag=a.pImag-b.pImag;
+  }
+  public void multiplicaComplejo(Complejo a,Complejo b){
+    this.pReal=(a.pReal*b.pReal)-(a.pImag*b.pImag);
+    this.pImag=(a.pReal*b.pImag)+(a.pImag*b.pReal);
+  }
+  public Complejo conjugado(Complejo a){
+    Complejo c= new Complejo(a.pReal(),-(a.pImag()));
+    return c;
+  }
+  public divisionCompleja(Complejo a,Complejo b){
+    b.conjugado();
+    Complejo aux = b.getValor();
+    
+  }
+  public void divideComplejo(Complejo a,Complejo b){
+    if(b.pReal!=0.0&&b.pImag!=0.0){
+      double den = (b.pReal*b.pReal)-(b.pImag*b.pImag);
+      this.pReal=((a.pReal*b.pReal)+(a.pImag*b.pImag))/den;
+      this.pImag=((a.pImag*b.pReal)-(a.pReal*b.pImag))/den;
+  }
+  public double modulo(){
+      double retorno= //raiz cuadrada de a2+b2)
+  }
+}
