@@ -59,7 +59,11 @@ public class Racional implements Operaciones{
     public void esIgual(Object a,Object b){
         Racional a1 = (Racional) a;
         Racional b1 = (Racional) b;
-
+        Entero aux1 = new Entero();
+        Entero aux2 = new Entero();
+        aux1.multiplicar(a1.getNum(),b1.getDen());
+        aux2.multiplicar(a1.getDen(),b1.getNum());
+        aux1.esIgual(aux1,aux2);
     }
     @Override
     public void potencia(Object a, Object b) {
