@@ -1,5 +1,5 @@
 package TADs;
-
+import java.lang.Math;
 public class Racional implements Operaciones{
     Entero num;
     Entero den;
@@ -60,5 +60,13 @@ public class Racional implements Operaciones{
         Racional a1 = (Racional) a;
         Racional b1 = (Racional) b;
 
+    }
+    @Override
+    public void potencia(Object a, Object b) {
+        Racional a1=(Racional) a;
+        Racional b1=(Racional) b; //seria racional a^al racional b (a.num/a,den)^b.num/
+        int exponente=b1.getNum().getValor()/b1.getDen().getValor();
+        this.num.setValor((int)Math.pow(a1.getNum().getValor(),exponente));
+        this.den.setValor((int)Math.pow(a1.getDen().getValor(),exponente));
     }
 }
