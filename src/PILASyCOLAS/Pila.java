@@ -1,9 +1,9 @@
 package PILASyCOLAS;
 
 public class Pila implements Contenedor{
-    private Object[] pila;
-    private int ini;
-    private int tam;
+    protected Object[] pila;
+    protected int ini;
+    protected int tam;
 
     public Pila(int tam){
         this.tam=tam;
@@ -19,10 +19,10 @@ public class Pila implements Contenedor{
     public boolean estaVacia(){
         return this.ini==-1;
     }
-    private void incrementaIni(){
+    protected void incrementaIni(){
         this.ini++;
     }
-    private void decrementaIni(){
+    protected void decrementaIni(){
         this.ini--;
     }
     @Override
