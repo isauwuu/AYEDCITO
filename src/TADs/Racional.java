@@ -73,4 +73,7 @@ public class Racional implements Operaciones{
         this.num.setValor((int)Math.pow(a1.getNum().getValor(),exponente));
         this.den.setValor((int)Math.pow(a1.getDen().getValor(),exponente));
     }
+    public void simplificar(Object a) {
+        //
+    }
 }
