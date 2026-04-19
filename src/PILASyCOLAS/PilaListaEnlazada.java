@@ -33,4 +33,25 @@ public class PilaListaEnlazada implements Contenedor{
             System.out.println("Error, pila vacia");
         return a;
     }
+
+    public int getTam(){
+        int c=0;
+        Nodo aux=this.pila;
+        while (aux!=null) {
+            c++;
+            aux = aux.getSig();
+        }
+        return c;
+    }
+    public void cambiaDos(){
+        if(this.getTam()>=2){
+            Nodo primero = this.pila;
+            Nodo segundo = this.pila.getSig();
+            primero.setSig(segundo.getSig());
+            segundo.setSig(primero);
+            this.pila=segundo;
+        }
+        else
+            System.out.println("Error, tamaño invalido para intercambiar dos nodos");
+    }
 }

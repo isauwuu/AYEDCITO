@@ -10,6 +10,31 @@ public class Pila implements Contenedor{
         this.pila= new Object[tam];
         this.ini=-1;
     }
+
+    public void setPila(Object[] pila) {
+        this.pila = pila;
+    }
+
+    public void setIni(int ini) {
+        this.ini = ini;
+    }
+
+    public void setTam(int tam) {
+        this.tam = tam;
+    }
+
+    public Object[] getPila() {
+        return pila;
+    }
+
+    public int getTam() {
+        return tam;
+    }
+
+    public int getIni() {
+        return ini;
+    }
+
     public void limpiar(){
         this.ini=-1;
     }
@@ -45,6 +70,16 @@ public class Pila implements Contenedor{
         else
             System.out.println("Error, pila vacia");
         return a;
+    }
+    public void cambiaDos(){
+        if(this.getTam()>=2){
+            Object aux1 = this.sacar();
+            Object aux2 = this.sacar();
+            meter(aux2);
+            meter(aux1);
+        }
+        else
+            System.out.println("Error, tamaño incorrecto para intercambio");
     }
 //    public
 }
