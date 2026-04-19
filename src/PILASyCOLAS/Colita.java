@@ -8,10 +8,10 @@ public class Colita extends Cola {
     public int cardinal() {
         if (estaVacia())
             return 0;
-        if (this.iniC < this.finC)
-            return this.finC - this.iniC;
+        if (getIniC() < getFinC())
+            return getFinC() - getIniC();
         else
-            return (this.getTam() - this.iniC) + this.finC;
+            return (this.getTam() - getIniC()) + getFinC();
     }
 
     public void invierteColita() {

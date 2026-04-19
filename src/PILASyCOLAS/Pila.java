@@ -1,9 +1,9 @@
 package PILASyCOLAS;
 
 public class Pila implements Contenedor {
-    protected Object[] pila;
-    protected int ini;
-    protected int tam;
+    private Object[] pila;
+    private int ini;
+    private int tam;
 
     public Pila(int tam) {
         this.tam = tam;

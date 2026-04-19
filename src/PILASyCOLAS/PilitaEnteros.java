@@ -16,7 +16,7 @@ public class PilitaEnteros extends PilaListaEnlazada{
     public ColaListaEnlazada generaColaCap(){
         PilaListaEnlazada pilaAux = new PilaListaEnlazada();
         ColaListaEnlazada retorno = new ColaListaEnlazada();
-        Integer actual = null;
+        Integer actual;
         if(!(estaVacia())){
             while (!(estaVacia())) {
                 actual = (Integer) this.sacar();

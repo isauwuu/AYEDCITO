@@ -1,14 +1,26 @@
 package PILASyCOLAS;
 
 public class Cola implements Contenedor{
-    protected Object[] cola;
-    protected int iniC,finC;
-    protected int tam;
+    private Object[] cola;
+    private int iniC,finC;
+    private int tam;
 
     public Cola(int tam){
         this.tam=tam;
         this.cola= new Object[tam];
         limpiar();
+    }
+
+    public int getIniC() {
+        return iniC;
+    }
+
+    public int getFinC() {
+        return finC;
+    }
+
+    public Object[] getCola() {
+        return cola;
     }
 
     public int getTam() {

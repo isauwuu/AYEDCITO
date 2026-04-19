@@ -6,9 +6,9 @@ public class Pilita extends Pila{
     }
     public Object topePila(){
         Object aux = null;
-        if(!(this.estaVacia())){
-            aux=this.sacar();
-            this.meter(aux);
+        if(!(estaVacia())){
+            aux=sacar();
+            meter(aux);
         }
         else
             System.out.println("Error, pila vacia");
