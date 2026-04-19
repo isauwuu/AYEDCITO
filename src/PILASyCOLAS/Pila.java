@@ -75,8 +75,8 @@ public class Pila implements Contenedor{
         if(this.getTam()>=2){
             Object aux1 = this.sacar();
             Object aux2 = this.sacar();
-            meter(aux2);
             meter(aux1);
+            meter(aux2);
         }
         else
             System.out.println("Error, tamaño incorrecto para intercambio");
