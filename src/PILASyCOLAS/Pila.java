@@ -1,14 +1,14 @@
 package PILASyCOLAS;
 
-public class Pila implements Contenedor{
+public class Pila implements Contenedor {
     protected Object[] pila;
     protected int ini;
     protected int tam;
 
-    public Pila(int tam){
-        this.tam=tam;
-        this.pila= new Object[tam];
-        this.ini=-1;
+    public Pila(int tam) {
+        this.tam = tam;
+        this.pila = new Object[tam];
+        this.ini = -1;
     }
 
     public void setPila(Object[] pila) {
@@ -35,51 +35,73 @@ public class Pila implements Contenedor{
         return ini;
     }
 
-    public void limpiar(){
-        this.ini=-1;
+    public void limpiar() {
+        this.ini = -1;
     }
-    public boolean estaLlena(){
-            return this.ini==this.tam-1;
+
+    public boolean estaLlena() {
+        return this.ini == this.tam - 1;
     }
-    public boolean estaVacia(){
-        return this.ini==-1;
+
+    public boolean estaVacia() {
+        return this.ini == -1;
     }
-    protected void incrementaIni(){
+
+    protected void incrementaIni() {
         this.ini++;
     }
-    protected void decrementaIni(){
+
+    protected void decrementaIni() {
         this.ini--;
     }
+
     @Override
     public void meter(Object a) {
-        if(!estaLlena()){
+        if (!estaLlena()) {
             incrementaIni();
-            this.pila[this.ini]=a;
-        }
-        else
+            this.pila[this.ini] = a;
+        } else
             System.out.println("Error, pila llena");
     }
 
     @Override
     public Object sacar() {
-        Object a=null;
-        if(!estaVacia()){
-            a=this.pila[this.ini];
+        Object a = null;
+        if (!estaVacia()) {
+            a = this.pila[this.ini];
             decrementaIni();
-        }
-        else
+        } else
             System.out.println("Error, pila vacia");
         return a;
     }
-    public void cambiaDos(){
-        if(this.getTam()>=2){
+
+    public void cambiaDos() {
+        /*precondicion: la pila ya debe haber sido creada y debe tener +2 elementos,postcondicion: la pila intercambia los 2 primeros elementos */
+        if (this.getTam() >= 2) {
             Object aux1 = this.sacar();
             Object aux2 = this.sacar();
             meter(aux1);
             meter(aux2);
-        }
-        else
+        } else
             System.out.println("Error, tamaño incorrecto para intercambio");
     }
-//    public
+
+    public boolean estaBalanceada(String cadena) {
+        Pila pilaAux = new Pila(cadena.length());
+        for (int i = 0; i < cadena.length(); i++) {
+            char letra = cadena.charAt(i);
+            if (letra == '(') {
+                pilaAux.meter(letra);
+            }
+            else {
+                if (letra == ')') {
+                    if (pilaAux.estaVacia())
+                        return false;
+                    else
+                        pilaAux.sacar();
+                }
+            }
+        }
+        return pilaAux.estaVacia();
+    }
 }

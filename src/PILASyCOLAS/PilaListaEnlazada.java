@@ -54,4 +54,5 @@ public class PilaListaEnlazada implements Contenedor{
         else
             System.out.println("Error, tamaño invalido para intercambiar dos nodos");
     }
+    /*precondicion: la pila ya debe haber sido creada y debe tener +2 elementos,postcondicion: la pila intercambia los 2 primeros elementos */
 }
