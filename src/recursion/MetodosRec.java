@@ -138,4 +138,31 @@ public class MetodosRec {
         else
             return 1;
     }
+    public Boolean[] listaPrimos(Integer[] a){
+        Boolean[] listaAux= new Boolean[a.length];
+        guardaResultados(a,listaAux,0);
+        return listaAux;
+    }
+    public void guardaResultados(Integer[] a,Boolean[] lista,int pos){
+        if(pos<a.length){
+            lista[pos]=esPrimo(a[pos],3);
+            guardaResultados(a,lista,pos+1);
+        }
+    }
+    public boolean esPrimo(int num,int d){
+        if (num==1)
+            return false;
+        if (num==2||num==3)
+            return true;
+        if(num%2==0)
+            return false;
+        if(d*d<=num){
+            if(num%d==0)
+                return false;
+            else
+                return esPrimo(num,d+2);
+        }
+        else
+            return true;
+    }
 }
