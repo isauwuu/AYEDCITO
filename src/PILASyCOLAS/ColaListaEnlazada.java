@@ -20,7 +20,7 @@ public class ColaListaEnlazada implements Contenedor{
     @Override
     public void meter(Object a) {
         if(!estaVacia()){
-            this.finC.setDato(new Nodo(a));
+            this.finC.setSig(new Nodo(a));
             this.finC=this.finC.getSig();
         }
         else
