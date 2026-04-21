@@ -165,4 +165,13 @@ public class MetodosRec {
         else
             return true;
     }
+    public int getSumaTotal(int n,int signo){
+        if (n!=0)
+            return ((n%10)*signo)+getSumaTotal(n/10,signo*(-1));
+        else
+            return 0;
+    }
+    public boolean esDivPor11(int num){
+        return (getSumaTotal(num,1))%11==0;
+    }
 }
