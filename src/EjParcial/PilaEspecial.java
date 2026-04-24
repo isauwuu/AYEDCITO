@@ -39,7 +39,6 @@ public class PilaEspecial {
     }
     else
         System.out.println("Error, pila vacia");
-        return aux;
+    return aux;
     }
-
 }

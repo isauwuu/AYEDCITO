@@ -26,7 +26,6 @@ public class ColaListaEnlazada implements Contenedor{
         else
             this.iniC=this.finC=new Nodo(a);
     }
-
     @Override
     public Object sacar() {
         Object a = null;

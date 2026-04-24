@@ -11,28 +11,8 @@ public class Pila implements Contenedor {
         this.ini = -1;
     }
 
-    public void setPila(Object[] pila) {
-        this.pila = pila;
-    }
-
-    public void setIni(int ini) {
-        this.ini = ini;
-    }
-
-    public void setTam(int tam) {
-        this.tam = tam;
-    }
-
-    public Object[] getPila() {
-        return pila;
-    }
-
     public int getTam() {
         return tam;
-    }
-
-    public int getIni() {
-        return ini;
     }
 
     public void limpiar() {

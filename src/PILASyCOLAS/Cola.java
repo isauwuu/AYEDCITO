@@ -19,10 +19,6 @@ public class Cola implements Contenedor{
         return finC;
     }
 
-    public Object[] getCola() {
-        return cola;
-    }
-
     public int getTam() {
         return tam;
     }
@@ -67,9 +63,7 @@ public class Cola implements Contenedor{
             incrementaIni();
             a=this.cola[this.iniC];
         }
-        else {
-            System.out.println("Error, colita vacia :c");
-        }
+        else System.out.println("Error, colita vacia :c");
         return a;
     }
 
