@@ -15,4 +15,25 @@ public class NodoDoble {
         this.prevNodo=prevNodo;
         this.nextNodo=nextNodo;
     }
+    public void setPrevNodo(NodoDoble prevNodo){
+        this.prevNodo=prevNodo;
+    }
+
+    public NodoDoble getPrevNodo(){
+        return this.prevNodo;
+    }
+
+    public void setNextNodo(NodoDoble nextNodo){
+        this.nextNodo=nextNodo;
+    }
+
+    public NodoDoble getNextNodo(){
+        return this.nextNodo;
+    }
+    public void setNodoInfo(Object nodoInfo){
+        this.nodoInfo=nodoInfo;
+    }
+    public Object getNodoInfo(){
+        return this.nodoInfo;
+    }
 }
