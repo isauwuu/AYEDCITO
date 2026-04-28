@@ -32,4 +32,7 @@ public class PilitaEnteros extends PilaListaEnlazada{
             System.out.println("Error: pila vacia");
         return retorno;
     }
+    public void ordenaMenorMayor(){
+
+    }
 }
