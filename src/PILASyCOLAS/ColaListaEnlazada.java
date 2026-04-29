@@ -1,7 +1,7 @@
 package PILASyCOLAS;
 
 public class ColaListaEnlazada implements Contenedor{
-    private Nodo iniC,finC;
+    protected Nodo iniC,finC;
 
     public ColaListaEnlazada(){
         limpiar();

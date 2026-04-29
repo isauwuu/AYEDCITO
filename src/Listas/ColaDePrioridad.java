@@ -1,6 +1,40 @@
 package Listas;
 
 import PILASyCOLAS.ColaListaEnlazada;
+import PILASyCOLAS.Nodo;
 
-public class ColaDePrioridad extends ColaListaEnlazada implements  {
+public abstract class ColaDePrioridad extends ColaListaEnlazada implements OperacionesCL4 {
+    public void insertar(Object elemento){
+        if(estaVacia())
+            this.iniC =this.finC= new Nodo(elemento);
+        else{
+            if(esMenor(elemento,this.iniC.getDato()))
+                this.iniC=new Nodo(elemento,iniC);
+            else {
+                if(esMayor(elemento,this.finC.getDato())||sonIguales(elemento,this.finC.getDato())) {
+                    this.finC.setSig(new Nodo(elemento));
+                    this.finC=this.finC.getSig();
+                }
+                else{
+                    Nodo ant,act;
+                    ant=null;
+                    act=this.iniC;
+                    while (esMayor(elemento,act.getDato())||sonIguales(elemento,act.getDato())){
+                        ant=act;
+                        act=act.getSig();
+                    }
+                    Nodo aux = new Nodo(elemento);
+                    aux.setSig(act);
+                    ant.setSig(aux);
+                }
+            }
+        }
+    }
+    public void meter(Object elemento){
+        insertar(elemento);
+    }
+    public abstract boolean esMayor(Object a,Object b);
+    public abstract boolean esMenor(Object a,Object b);
+    public abstract boolean sonIguales(Object a,Object b);
+
 }

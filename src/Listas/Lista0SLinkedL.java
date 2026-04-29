@@ -1,6 +1,5 @@
 package Listas;
 
-import PILASyCOLAS.Nodo;
 
 public abstract class Lista0SLinkedL implements OperacionesCL4{
     protected Nodo frenteL;
