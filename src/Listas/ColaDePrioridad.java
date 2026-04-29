@@ -16,16 +16,14 @@ public abstract class ColaDePrioridad extends ColaListaEnlazada implements Opera
                     this.finC=this.finC.getSig();
                 }
                 else{
-                    Nodo ant,act;
-                    ant=null;
+                    Nodo act;
                     act=this.iniC;
-                    while (esMayor(elemento,act.getDato())||sonIguales(elemento,act.getDato())){
-                        ant=act;
+                    while (esMayor(elemento,act.getSig().getDato())||sonIguales(elemento,act.getSig().getDato())){
                         act=act.getSig();
                     }
                     Nodo aux = new Nodo(elemento);
-                    aux.setSig(act);
-                    ant.setSig(aux);
+                    aux.setSig(act.getSig());
+                    act.setSig(aux);
                 }
             }
         }

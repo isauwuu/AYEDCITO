@@ -25,6 +25,7 @@ public abstract class Lista0DLinkedL implements OperacionesCL2 {
                 System.out.println("Error eliminar. Posicion inexistente ");
             } else {
                 if (pos == 0) {
+                    //si la posicion es la primera
                     if (this.ini == this.fin) {
                         limpiar();
                     } else {
@@ -33,6 +34,7 @@ public abstract class Lista0DLinkedL implements OperacionesCL2 {
                         this.ult--;
                     }
                 } else {
+                    //si la posicion es la ultima
                     if (pos == tam() - 1) {
                         this.fin = this.fin.getPrevNodo();
                         this.fin.setNextNodo(null);
@@ -57,18 +59,18 @@ public abstract class Lista0DLinkedL implements OperacionesCL2 {
     public Object devolver(int pos){
         Object elemento = null;
         if (estaVacia()) {
-            System.out.println("Error devolver. Lista vacia...");
+            System.out.println("Error al devolver, Lista vacia...");
         } else {
             if (pos >= tam() || pos < 0) {
-                System.out.println("Error devolver. La posicion no existe..");
+                System.out.println("Error al devolver, La posicion es invalida");
             }else{
-                NodoDoble temp;
-                temp = this.ini;
+                NodoDoble act;
+                act = this.ini;
 
                 for (int cont = 0; cont < pos; cont++) {
-                    temp = temp.getNextNodo();
+                    act = act.getNextNodo();
                 }
-                elemento = temp.getNodoInfo();
+                elemento = act.getNodoInfo();
             }
         }
         return elemento;

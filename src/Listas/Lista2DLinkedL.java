@@ -17,24 +17,23 @@ public abstract class Lista2DLinkedL extends Lista0DLinkedL implements Operacion
             }else{
 
                 if (esMayor(elemento, this.fin.getNodoInfo()) || iguales(elemento, this.fin.getNodoInfo())) {	//insercion al final, si es igual no puede ponerse antes.
-                    //Completar!!!
-
+                    this.fin.setNextNodo(new NodoDoble(elemento,this.fin,null));
+                    this.fin=this.fin.getNextNodo();
                 }else{
                     // al medio
-                    NodoDoble temp = this.ini;
+                    NodoDoble act = this.ini;
                     boolean flag = false;
-                    while (temp.getNextNodo() != null && !flag) {
-                        if (esMayor(elemento, temp.getNextNodo().getNodoInfo()) || iguales(elemento, temp.getNextNodo().getNodoInfo())) {
-                            temp = temp.getNextNodo();
+                    while (act.getNextNodo() != null && !flag) {//empieza analizando desde el segundo elemento porque sabe q el primero esta bien ubicado
+                        if (esMayor(elemento, act.getNextNodo().getNodoInfo()) || iguales(elemento, act.getNextNodo().getNodoInfo())) {
+                            act = act.getNextNodo();
                         }else{
                             flag = true;
                         }
                     }
-
                     // insercion al medio. entre temp y temp.next
-                    nodo = new NodoDoble(elemento, temp, temp.getNextNodo());
-                    temp.getNextNodo().setPrevNodo(nodo);
-                    temp.setNextNodo(nodo);
+                    NodoDoble aux = new NodoDoble(elemento, act, act.getNextNodo());
+                    act.getNextNodo().setPrevNodo(aux);
+                    act.setNextNodo(aux);
                 }
             }
         }
@@ -46,11 +45,31 @@ public abstract class Lista2DLinkedL extends Lista0DLinkedL implements Operacion
     public abstract boolean esMenor(Object elemento1, Object elemento2);
     public abstract boolean esMayor(Object elemento1, Object elemento2);
 
-    // implementar alg�n metodo de b�squeda
     public int buscar(Object elemento){
-        // implementar!!!
-        return -1;
+        if(estaVacia()){
+            System.out.println("Error, lista vacia");
+            return -1;
+        }
+        else{
+            if(esMayor(elemento,this.fin.getNodoInfo())||esMenor(elemento,this.ini.getNodoInfo()))//mmmm se puede esto?creo q seria invalido cuando la lista no este ordenada ascendentemente
+                return -1;
+            if(iguales(elemento,this.ini.getNodoInfo()))
+                return 0;
+            if(iguales(elemento,this.fin.getNodoInfo()))
+                return this.tam()-1;
+            else{
+                NodoDoble act=this.ini.getNextNodo();
+                int c=1;
+                while (c<this.tam()-1&&!iguales(elemento,act.getNodoInfo())){
+                    c++;
+                    act=act.getNextNodo();
+                }
+                if(c<this.tam()-1)
+                    return c;
+                else
+                    return -1;
+            }
+        }
     }
-
 }
 
