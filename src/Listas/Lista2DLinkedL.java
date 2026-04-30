@@ -5,7 +5,6 @@ public abstract class Lista2DLinkedL extends Lista0DLinkedL implements Operacion
     // insercion ordenada
     public void insertar(Object elemento) {
         NodoDoble nodo;
-
         if (estaVacia()) {
             this.ini = this.fin = new NodoDoble(elemento);
 
@@ -51,8 +50,8 @@ public abstract class Lista2DLinkedL extends Lista0DLinkedL implements Operacion
             return -1;
         }
         else{
-            if(esMayor(elemento,this.fin.getNodoInfo())||esMenor(elemento,this.ini.getNodoInfo()))//mmmm se puede esto?creo q seria invalido cuando la lista no este ordenada ascendentemente
-                return -1;
+//            if(esMayor(elemento,this.fin.getNodoInfo())||esMenor(elemento,this.ini.getNodoInfo()))mmm se puede esto?creo q seria invalido cuando la lista no este ordenada ascendentemente
+//                return -1;
             if(iguales(elemento,this.ini.getNodoInfo()))
                 return 0;
             if(iguales(elemento,this.fin.getNodoInfo()))
@@ -60,14 +59,14 @@ public abstract class Lista2DLinkedL extends Lista0DLinkedL implements Operacion
             else{
                 NodoDoble act=this.ini.getNextNodo();
                 int c=1;
-                while (c<this.tam()-1&&!iguales(elemento,act.getNodoInfo())){
+                while (act!=null&&!iguales(elemento,act.getNodoInfo())){
                     c++;
                     act=act.getNextNodo();
                 }
-                if(c<this.tam()-1)
-                    return c;
-                else
+                if(act==null)
                     return -1;
+                else
+                    return c;
             }
         }
     }
