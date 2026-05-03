@@ -16,4 +16,17 @@ public abstract class Conjuntote extends Conjunto{
             }
         }
     }
+    public void interseccion(Conjuntote b){
+        if(b.tam==0)
+            this.limpiar();
+        else {
+            NodoDoble act= this.ini;
+                while (act!=null){
+                    NodoDoble sig = act.getNextNodo();
+                    if(!b.pertenece(act.getNodoInfo()))
+                        this.sacar(act.getNodoInfo());
+                    act=sig;
+                }
+            }
+    }
 }
