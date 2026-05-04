@@ -1,6 +1,7 @@
 package Listas;
 
 public abstract class Lista1DLinkedL extends Lista0DLinkedL implements OperacionesCL3 {
+
     public void insertar(Object elemento, int pos) {
         NodoDoble nodo;
         if (pos > tam() || pos < 0) {

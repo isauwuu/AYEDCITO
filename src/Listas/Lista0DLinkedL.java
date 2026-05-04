@@ -39,17 +39,14 @@ public abstract class Lista0DLinkedL implements OperacionesCL2 {
                         this.fin = this.fin.getPrevNodo();
                         this.fin.setNextNodo(null);
                     } else {
-                        NodoDoble prev, next;
-                        prev = this.ini;
-                        next = this.ini.getNextNodo();
-                        for (int cont = 1; cont < pos; cont++) {
-                            prev = prev.getNextNodo();
-                            next = next.getNextNodo();
+                        NodoDoble obj=this.ini;
+                        for (int cont = 0; cont < pos; cont++) {
+                            obj=obj.getNextNodo();
                         }
-
-                        next = next.getNextNodo();
-                        prev.setNextNodo(next); // actualizamos referencias
-                        next.setPrevNodo(prev);
+                        NodoDoble ant=obj.getPrevNodo();
+                        NodoDoble sig=obj.getNextNodo();
+                        ant.setNextNodo(sig);
+                        sig.setPrevNodo(ant);
                     }
                     this.ult--;
                 }
