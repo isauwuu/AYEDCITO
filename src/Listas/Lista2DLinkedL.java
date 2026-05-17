@@ -50,8 +50,8 @@ public abstract class Lista2DLinkedL extends Lista0DLinkedL implements Operacion
             return -1;
         }
         else{
-//            if(esMayor(elemento,this.fin.getNodoInfo())||esMenor(elemento,this.ini.getNodoInfo()))mmm se puede esto?creo q seria invalido cuando la lista no este ordenada ascendentemente
-//                return -1;
+            if(esMayor(elemento,this.fin.getNodoInfo())||esMenor(elemento,this.ini.getNodoInfo()))//mmm se puede esto?creo q seria invalido cuando la lista no este ordenada ascendentemente
+                return -1;
             if(iguales(elemento,this.ini.getNodoInfo()))
                 return 0;
             if(iguales(elemento,this.fin.getNodoInfo()))
