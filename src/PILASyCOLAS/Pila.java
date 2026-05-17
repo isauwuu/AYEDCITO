@@ -43,7 +43,19 @@ public class Pila implements Contenedor {
         } else
             System.out.println("Error, pila llena");
     }
-
+    public boolean sumaAux(Pila pila,int ac,int n) {
+        if(!estaVacia()){
+            int aux=(Integer)pila.sacar();
+            boolean resultado=sumaAux(pila,aux + ac, n);
+            pila.meter(aux);
+            return resultado;
+        }
+        else
+            return ac==n;
+    }
+    public boolean sumaIgualN(Pila pila, int n) {
+        return sumaAux(pila, 0, n);
+    }
     @Override
     public Object sacar() {
         Object a = null;
