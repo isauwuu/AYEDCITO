@@ -13,7 +13,7 @@ Todo el código está hecho en **Java** aplicando Programación Orientada a Obje
 * **Grafos:** Modelado de Grafos Dirigidos y No Dirigidos mediante matrices de adyacencia.
   * **Caminos Mínimos:** Algoritmos de Dijkstra y Floyd-Warshall.
   * **Árboles Cubridores (MST):** Algoritmos de Prim y Kruskal (usando Conjuntos Disjuntos).
-* **Otros TADs:** Implementación de objetos matemáticos (Racionales, Complejos) y modelos para TPs específicos (Mochilas, Ranking FIFA, etc.).
+* **Otros TADs:** Implementación de objetos matemáticos (Racionales, Complejos) y modelos para TPs específicos.
 
 ## Tecnologías
 * Java (JDK)
