@@ -1,6 +1,6 @@
 package Listas;
 
-
+//Lista simplemente enlazada ordenada
 public abstract class Lista0SLinkedL implements OperacionesCL4{
     protected Nodo frenteL;
     protected Nodo finalL;

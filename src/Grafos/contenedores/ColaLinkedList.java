@@ -1,6 +1,6 @@
-package Grafos.Contenedores;
+package Grafos.contenedores;
 
-import Listas.Nodo;
+import Grafos.recursos.*;
 
 public abstract class ColaLinkedList implements OperacionesCL1{
     protected Nodo frenteC, finalC;
@@ -18,8 +18,8 @@ public abstract class ColaLinkedList implements OperacionesCL1{
     public Object sacar(){
         Object elemento = null;
         if (!estaVacia()){
-            elemento=this.frenteC.getDato();
-            this.frenteC=this.frenteC.getSig();
+            elemento=this.frenteC.getNodoInfo();
+            this.frenteC=this.frenteC.getNextNodo();
             if (estaVacia()){
                 this.finalC=null;
             }
@@ -34,3 +34,4 @@ public abstract class ColaLinkedList implements OperacionesCL1{
     }
 
 }
+

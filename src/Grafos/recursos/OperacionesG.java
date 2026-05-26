@@ -1,6 +1,7 @@
-package Grafos.Contenedores;
+package Grafos.recursos;
 
 public interface OperacionesG {
     public void muestraBEA();
     public void muestraBPF();
+
 }

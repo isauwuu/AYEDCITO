@@ -1,4 +1,6 @@
-package Grafos.Contenedores;
+package Grafos.contenedores;
+
+import Grafos.recursos.*;
 
 public class ColaSLinkedList extends ColaLinkedList{
 

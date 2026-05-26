@@ -1,4 +1,4 @@
-package Grafos.Contenedores;
+package Grafos.recursos;
 
 public interface OperacionesGND {
     public void muestraPrim(int k);

@@ -1,9 +1,9 @@
-package Grafos.Contenedores;
+package Grafos.contenedores;
 
-public abstract class AbsGrafo implements OperacionesG{
+public abstract class AbsGrafo {
     protected MatrizGrafo matrizCosto;
     protected int ordenGrafo;
-    protected static double INF=10000;
+    protected static double infinito=10000;
 
     public AbsGrafo(int ordenGrafo) {
         this.ordenGrafo = ordenGrafo;
@@ -21,12 +21,12 @@ public abstract class AbsGrafo implements OperacionesG{
         boolean marcado;
         double currCost;
 
-        listaMarca.reemplazar((Boolean)true, v);
+        listaMarca.reemplazar(new Boolean(true), v);
         System.out.println("vertice "+ v);
         for (int w=0;w<getOrden();w++){
             marcado=(boolean)listaMarca.devolver(w);
             currCost=(double)this.matrizCosto.devolver(v,w);
-            if (currCost!=INF && !marcado){
+            if (currCost!=infinito && !marcado){
                 bpf(listaMarca,w);
             }
         }
@@ -65,7 +65,7 @@ public abstract class AbsGrafo implements OperacionesG{
             for (int z=0;z<getOrden();z++){
                 marcado=(boolean)listaMarca.devolver(z);
                 currCost=(double)this.matrizCosto.devolver(w,z);
-                if (currCost!=INF && !marcado){
+                if (currCost!=infinito && !marcado){
                     listaMarca.reemplazar(true, z);
                     cola.meter(z);
                     System.out.println("arista visitada " + w + " - " + z);

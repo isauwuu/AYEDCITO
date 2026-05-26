@@ -1,6 +1,7 @@
-package Grafos.Contenedores;
+package Grafos.recursos;
 
 public interface OperacionesGD {
     public void muestraDijkstra(int startVertex);
     public void muestraFloyd();
+
 }
