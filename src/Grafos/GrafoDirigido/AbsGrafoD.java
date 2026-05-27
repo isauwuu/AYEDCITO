@@ -16,7 +16,6 @@ public abstract class AbsGrafoD extends AbsGrafo implements OperacionesGD {
 
     public void muestraDijkstra(int startVertex){
         double currCost; int w;
-
         Dijkstra(startVertex);
 
         for (int v=0; v<getOrden();v++){
@@ -39,37 +38,51 @@ public abstract class AbsGrafoD extends AbsGrafo implements OperacionesGD {
     }
 
     private void Dijkstra(int startVertex){
-        double minCost, currCost, arcCost; int minVertex, vertex;
+        double minCost, currCost, arcCost;
+        int minVertex, vertex;
 
         this.listaDistancia = new ListaDoubleLinkedL();
         this.listaCamino = new ListaDoubleLinkedL();
         this.listaSolucion = new ListaDoubleLinkedL();
 
+        //INICIALIZA TODO EN INFINITO Y EN -1
         for (int i=0; i<getOrden();i++){
             this.listaSolucion.insertar(-1, i);
             this.listaCamino.insertar(-1, i);
             this.listaDistancia.insertar(infinito, i);
         }
-        this.listaSolucion.reemplazar(startVertex,startVertex); // el primer vertice del camino
 
+
+        this.listaSolucion.reemplazar(startVertex,startVertex);
+        //reemplaza en el ""inidice"" i la posicion i (Lo marca ya como visitado
+        //podria ponerse algo tmb como this.listaDistancia(0,1) marcando q el costo es cero :v
+        // el primer vertice del camino
+
+        //INICIALIZACION DE LAS LISTAS A PARTIR DEL VERTICE
         for (int i=0; i<getOrden();i++){
+            //recorre para todos los vertices con los q tiene conexion el nodo inicial y reemplaza el precio en listaDistancia en la pos(precio,pos)
+            //no hay q preocuparse por perder valores del costo del camino ya que todos en ese momento son infitinos
             if (i!=startVertex){
                 this.listaDistancia.reemplazar(this.matrizCosto.devolver(startVertex, i), i);
                 this.listaCamino.reemplazar(startVertex, i);
+                //pone al vertice inicial como predecesor de todos los caminos
             }
         }
 
-
         for (int i=1; i<getOrden();i++){
+            //Itera V-1 veces, es el q controla todo el algoritmo. Arranca en 1 porque el vértice de origen (startVertex) ya fue procesado y "sellado" antes de entrar a este bucle. En cada vuelta, este bucle tiene un solo propósito: conquistar y sellar de forma definitiva el camino hacia un nuevo nodo.
             minCost=infinito;
             minVertex=-1;
-
+            //todavia no asigna cual va a ser el vertice minimo y el costo min porloq lo asigna con el peor caso
             for (int w=0; w<getOrden();w++){
+                //recorre todos los vertices distintos del origen
                 if (w!=startVertex){
-                    currCost=(double) this.listaDistancia.devolver(w);//
+                    currCost=(double) this.listaDistancia.devolver(w);
                     vertex=(int) this.listaSolucion.devolver(w);
                     if (currCost<minCost && vertex==-1){
-                        minCost=currCost; minVertex=w;
+                        //pregunta si el costo actual es menor al q venia guardando
+                        minCost=currCost;
+                        minVertex=w;
                     }
                 }
             }
@@ -78,7 +91,6 @@ public abstract class AbsGrafoD extends AbsGrafo implements OperacionesGD {
                 System.out.println("it " + i + " minVertex " + minVertex + " minCost " + minCost);
                 this.listaSolucion.reemplazar(minVertex, minVertex);
                 this.listaDistancia.reemplazar(minCost, minVertex);
-
 
                 for (int v=0;v<getOrden();v++){
                     vertex=(int)this.listaSolucion.devolver(v);

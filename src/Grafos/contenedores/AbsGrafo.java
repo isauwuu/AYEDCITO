@@ -21,7 +21,7 @@ public abstract class AbsGrafo {
         boolean marcado;
         double currCost;
 
-        listaMarca.reemplazar(new Boolean(true), v);
+        listaMarca.reemplazar(true, v);
         System.out.println("vertice "+ v);
         for (int w=0;w<getOrden();w++){
             marcado=(boolean)listaMarca.devolver(w);
