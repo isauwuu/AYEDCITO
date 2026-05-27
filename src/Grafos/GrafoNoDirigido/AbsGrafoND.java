@@ -44,6 +44,24 @@ public abstract class AbsGrafoND extends AbsGrafo implements OperacionesGND{
         }
         return may;
     }
+    public ListaDoubleLinkedL getAristas(int v){
+        // obtiene el conjunto de aristas adyacentes del vértice v del grafo.
+        ListaDoubleLinkedL aristas= new ListaDoubleLinkedL();
+        Double costoActual;
+        if(v>=getOrden()||v<0){
+            System.out.println("Error, vertice invalido no es posible conseguir aristas");
+            return aristas; //se retorna la lista vacia en vez de null;
+        }
+        for (int i=0;i<getOrden();i++){
+            if(v!=i) {
+                costoActual = (Double) this.matrizCosto.devolver(v, i);
+                if (costoActual != infinito)
+                    aristas.insertar(new Connection(v, i, costoActual), aristas.tamanio());
+            }
+        }
+        return aristas;
+    }
+
 
     private void Prim(int vertex){
         ListaDoubleLinkedL listaMenorCosto, listaMasCercano;
