@@ -28,7 +28,7 @@ public abstract class AbsGrafoND extends AbsGrafo implements OperacionesGND{
             return -1;
         }
         for (int i = 0; i < getOrden(); i++) {
-            if (i!=v&&(Double) this.matrizCosto.devolver(v, i) != infinito)
+            if (i!=v&& matrizCosto.areConnected(v,i))
                 c++;
         }
         return c;
