@@ -21,7 +21,18 @@ public abstract class AbsGrafoND extends AbsGrafo implements OperacionesGND{
             }
         }
     }
-
+    public int getGrado(int v){
+        int c=0;// getGrado(int v): obtiene el grado del vértice v del grafo. <-- Entonces se toma al grafo como un grafo de enteros no?
+        if(v>=getOrden()||v<0) {
+            System.out.println("Error, el vertice no existe");
+            return -1;
+        }
+        for (int i = 0; i < getOrden(); i++) {
+            if (i!=v&&(Double) this.matrizCosto.devolver(v, i) != infinito)
+                c++;
+        }
+        return c;
+    }
 
     private void Prim(int vertex){
         ListaDoubleLinkedL listaMenorCosto, listaMasCercano;
