@@ -61,6 +61,20 @@ public abstract class AbsGrafoND extends AbsGrafo implements OperacionesGND{
         }
         return aristas;
     }
+    public ListaDoubleLinkedL getAristas() {
+        //obtiene el conjunto de aristas del grafo.
+        ListaDoubleLinkedL aristas= new ListaDoubleLinkedL();
+        for(int i=0;i<getOrden();i++){
+            for(int j=i+1;j<getOrden();j++){
+                //podria optimizarse usando una variable auxiliar con el costo asi no vamos a buscar 2 veces en la matriz pero tmb queria usar ese metodo de areConnected :,v
+                if(this.matrizCosto.areConnected(i,j)){
+                    aristas.insertar(new Connection(i,j,(Double)this.matrizCosto.devolver(i,j)),aristas.tamanio());
+                }
+            }
+        }
+        return aristas;
+    }
+
 
 
     private void Prim(int vertex){
