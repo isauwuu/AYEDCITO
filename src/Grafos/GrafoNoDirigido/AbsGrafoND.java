@@ -34,6 +34,17 @@ public abstract class AbsGrafoND extends AbsGrafo implements OperacionesGND{
         return c;
     }
 
+    public int getGrado(){
+        int may=0;
+        int gradoActual;
+        for (int i=0;i<getOrden();i++) {
+            gradoActual=getGrado(i);
+            if (gradoActual > may)
+                may = gradoActual;
+        }
+        return may;
+    }
+
     private void Prim(int vertex){
         ListaDoubleLinkedL listaMenorCosto, listaMasCercano;
         listaMenorCosto = new ListaDoubleLinkedL();
