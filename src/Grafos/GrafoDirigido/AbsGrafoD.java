@@ -170,7 +170,6 @@ public abstract class AbsGrafoD extends AbsGrafo implements OperacionesGD {
     }
 
 
-
     public void muestraCaminoFloyd(int origen, int destino){
         double hayCamino = (Double) this.matrizCostoF.devolver(origen, destino);
         if(hayCamino!=infinito) {
@@ -195,5 +194,36 @@ public abstract class AbsGrafoD extends AbsGrafo implements OperacionesGD {
             System.out.print(" |");
         }
     }
-
+    int getGradosEntrada(int v){
+        if(v >= getOrden() || v < 0){
+            System.out.println("Error, el vertice no existe");
+            return -1;
+        }
+        else{
+            int c=0;
+            for (int i=0;i<getOrden();i++){
+                if(i!=v){
+                    if(this.matrizCosto.areConnected(i,v))
+                        c++;
+                }
+            }
+            return c;
+        }
+    }
+    int getGradosSalida(int v){
+        if(v >= getOrden() || v < 0){
+            System.out.println("Error, el vertice no existe");
+            return -1;
+        }
+        else{
+            int c=0;
+            for (int i=0;i<getOrden();i++){
+                if(i!=v){
+                    if(this.matrizCosto.areConnected(v,i))
+                        c++;
+                }
+            }
+            return c;
+        }
+    }
 }
