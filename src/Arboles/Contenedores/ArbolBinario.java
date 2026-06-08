@@ -3,6 +3,7 @@ import Arboles.Recursos.*;
 
 
 public abstract class ArbolBinario implements operacionesArbolB {
+    //!!! CLASE ABSTRACTA EH
     protected NodoArbolBinario root;
 
     public abstract void imprimir(Object nodoInfo);
@@ -12,7 +13,7 @@ public abstract class ArbolBinario implements operacionesArbolB {
     public abstract NodoArbolBinario devuelve(Object nodoInfo);
 
     public boolean estaVacio(){
-        return (this.root==null);
+        return this.root==null;
     }
 
     public void limpiar(){
@@ -25,12 +26,12 @@ public abstract class ArbolBinario implements operacionesArbolB {
 
 
     public void muestraPreOrder(){
-        // completar
+       preOrder(this.root);
     }
 
 
     public void muestraPostOrder(){
-        // completar
+        postOrder(this.root);
     }
 
 
@@ -43,13 +44,21 @@ public abstract class ArbolBinario implements operacionesArbolB {
     }
 
 
-    private void preOrder(NodoArbolBinario nodo){
-        // completar
+    private void preOrder(NodoArbolBinario nodo) {
+        if (nodo != null) {
+            imprimir(nodo.getNodoInfo());
+            preOrder(nodo.getLeftChild());
+            preOrder(nodo.getRightChild());
+        }
     }
 
 
     private void postOrder(NodoArbolBinario nodo){
-        // completar
+        if (nodo != null){
+            postOrder(nodo.getLeftChild());
+            postOrder(nodo.getRightChild());
+            imprimir(nodo.getNodoInfo());
+        }
     }
 
 
@@ -74,10 +83,8 @@ public abstract class ArbolBinario implements operacionesArbolB {
     }
 
 
-    public int alturaArbol(NodoArbolBinario nodo)
-    {
+    public int alturaArbol(NodoArbolBinario nodo) {
         int alturaIzq, alturaDer;
-
         if(nodo==null){
             return -1;
         } else {

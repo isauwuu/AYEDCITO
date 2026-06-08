@@ -4,13 +4,13 @@ public class NodoAVL {
 
     private Object nodoInfo;
     private NodoAVL leftChild, rightChild;
-    public int altura;
+    public int altura; //
 
     public NodoAVL() {
         setNodoInfo(null);
         setLeftChild(null);
         setRightChild(null);
-        setHeight(0);
+        setHeight(0); //la q se usa para calcular el FE de un nodo:P
     }
 
     public NodoAVL(Object nodoInfo) {

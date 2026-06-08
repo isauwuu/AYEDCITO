@@ -10,17 +10,17 @@ public class NodoArbolBinario {
         setRightChild(null);
     }
 
-    public NodoArbolBinario(Object nodoInfo){
+    public NodoArbolBinario(Object nodoInfo){ //se crea un nodo solo con el contenido, sin referencias
         this(nodoInfo, null,null);
     }
 
-    public NodoArbolBinario(Object nodoInfo, NodoArbolBinario leftChild, NodoArbolBinario rightChild){
+    public NodoArbolBinario(Object nodoInfo, NodoArbolBinario leftChild, NodoArbolBinario rightChild){ //se cre un nodo completo
         setNodoInfo(nodoInfo);
         setLeftChild(leftChild);
         setRightChild(rightChild);
     }
 
-
+    //solo getters y setters
     public void setNodoInfo(Object nodoInfo){
         this.nodoInfo=nodoInfo;
     }

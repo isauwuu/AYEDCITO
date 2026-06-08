@@ -11,47 +11,47 @@ public abstract class ABB extends ArbolBinario {
     public abstract boolean mayor(Object nodoA, Object nodoB);
 
     public void meter(Object nodoInfo){
-        NodoArbolBinario temp, anterior;
+        NodoArbolBinario act, ant;
         NodoArbolBinario nodo = new NodoArbolBinario(nodoInfo);
 
         if (estaVacio()){
+            //es la raiz
             this.root=nodo;
         }else{
-            temp=this.root;
-            anterior=null;
-            while (temp!=null){
-                anterior=temp;
-                if (mayor(temp.getNodoInfo(),nodoInfo)){
-                    temp=temp.getLeftChild();
+            act=this.root;
+            ant=null;
+            while (act!=null){
+                ant=act;
+                if (mayor(act.getNodoInfo(),nodoInfo)){
+                    //mientras sea mayor sigue avanzando a la derecha
+                    act=act.getLeftChild();
                 }else{
-                    if(menor(temp.getNodoInfo(),nodoInfo)) {
-                        temp=temp.getRightChild();
-                    }else {//son iguales
-                        temp=null;
+                    if(menor(act.getNodoInfo(),nodoInfo)) {
+                        //mientras sea menor sigue avanzando a la izq
+                        act=act.getRightChild();
+                    }else {//son iguales, entonces no se lo agrega asi q sale:v
+                        act=null;
                     }
                 }
             }
-            if(!iguales(anterior.getNodoInfo(),nodoInfo)) {
-                if (menor(anterior.getNodoInfo(),nodoInfo)){
-                    anterior.setRightChild(nodo);
+            if(!iguales(ant.getNodoInfo(),nodoInfo)) {
+                if (menor(ant.getNodoInfo(),nodoInfo)){
+                    ant.setRightChild(nodo);
                 }else{
-                    anterior.setLeftChild(nodo);
+                    ant.setLeftChild(nodo);
                 }
             }
         }
     }
 
-
-
-
     private NodoArbolBinario devuelveNodo(Object nodoInfo){
         NodoArbolBinario nodo=null;
-        boolean response=false;
+        boolean esta=false;
 
         nodo=this.root;
-        while (nodo!=null && !response){
+        while (nodo!=null && !esta){
             if (iguales(nodo.getNodoInfo(),nodoInfo)){
-                response=true;
+                esta=true;
             }else {
                 if (mayor(nodo.getNodoInfo(),nodoInfo)){
                     nodo=nodo.getLeftChild();
@@ -96,80 +96,81 @@ public abstract class ABB extends ArbolBinario {
 
 
     public void sacar(Object nodoInfo){
-        NodoArbolBinario temp,anterior, auxiliar;
-        boolean response=false;
-
+        //eliminar en un arbol bin :,v
+        NodoArbolBinario ant,act, auxiliar; //act= el nodo q queremos eliminar, ant= el padre
+        boolean encontrado=false;
         if (!estaVacio()){
-            if (esta(nodoInfo)){
-                anterior=null;
-                temp=this.root;
+            if (esta(nodoInfo)){ //chequea si no esta vacio y luego si esta, ahi recien hace la eliminacion
+                ant=null;
+                act=this.root;
 
-                while (temp!=null && !response){
-                    if (iguales(temp.getNodoInfo(),nodoInfo)){
-                        response=true;
+                while (act!=null && !encontrado){
+                    if (iguales(act.getNodoInfo(),nodoInfo)){
+                        encontrado=true;
                     }else {
-                        anterior=temp;
-                        if (mayor(temp.getNodoInfo(),nodoInfo)){
-                            temp=temp.getLeftChild();
+                        ant=act; //guardamos al nuevo padre antes de bajar
+                        if (mayor(act.getNodoInfo(),nodoInfo)){
+                            act=act.getLeftChild();
                         }else {
-                            temp=temp.getRightChild();
+                            act=act.getRightChild();
                         }
                     }
                 }
-
-                if (temp.getLeftChild()==null && temp.getRightChild()==null){
+                if (act.getLeftChild()==null && act.getRightChild()==null){
                     // el nodo a eliminar es hoja
-                    if (anterior==null){
+                    if (ant==null){
+                        //si es un solo nodo
                         limpiar();
                     }else{
-                        if (anterior.getLeftChild()==temp){
-                            anterior.setLeftChild(null);
+                        //pregunta si el nodo a eliminar es el izq o el der y corta la referencia
+                        if (ant.getLeftChild()==act){
+                            ant.setLeftChild(null);
                         }else{
-                            anterior.setRightChild(null);
+                            ant.setRightChild(null);
                         }
                     }
                 }else{
-                    if (temp.getLeftChild()!=null && temp.getRightChild()!=null){
+                    if (act.getLeftChild()!=null && act.getRightChild()!=null){
                         // el nodo a eliminar tiene dos hijos
-                        anterior=temp;
-                        auxiliar=temp.getLeftChild(); // tomo hijo izq del nodo a eliminar
+                        ant=act;
+                        auxiliar=act.getLeftChild(); // nuevo aux, da un paso a la izq y empieza a bajar a la derecha
                         // y busco el mayor de los menores
                         while (auxiliar.getRightChild()!=null){
-                            anterior=auxiliar;
-                            auxiliar=auxiliar.getRightChild();
+                            ant=auxiliar;
+                            auxiliar=auxiliar.getRightChild(); //en auxiliar queda guardado el valor del mayor de los menores
                         }
-                        temp.setNodoInfo(auxiliar.getNodoInfo());
+                        act.setNodoInfo(auxiliar.getNodoInfo());
                         // el nodo a eliminar ahora toma el valor del mayor de los menores
-                        if (anterior==temp){
-                            anterior.setLeftChild(auxiliar.getLeftChild());
+                        if (ant==act){
+                            ant.setLeftChild(auxiliar.getLeftChild());
                             // el nuevo hijo izq del nodo eliminado es su nieto izq
                         }else{
                             // el nuevo hijo derecho del padre del nodo "eliminado" es su nieto izq.
-                            anterior.setRightChild(auxiliar.getLeftChild());
+                            ant.setRightChild(auxiliar.getLeftChild());
                         }
 
                     }else{
                         // el nodo a eliminar tiene un hijo der
-                        if (temp.getRightChild()!=null){
-                            if (anterior==null){
+                        if (act.getRightChild()!=null){
+                            if (ant==null){
                                 // nodo raiz con hijo der
-                                this.root=temp.getRightChild();
+                                this.root=act.getRightChild();
                             }else{
-                                if (anterior.getRightChild()==temp){
-                                    anterior.setRightChild(temp.getRightChild());
+                                if (ant.getRightChild()==act){
+                                    ant.setRightChild(act.getRightChild());
                                 }else{
-                                    anterior.setLeftChild(temp.getRightChild());
+                                    ant.setLeftChild(act.getRightChild());
                                 }
                             }
                         }else{
-                            if (anterior==null){
+                            if (ant==null){
                                 // nodo raiz con hijo izq
-                                this.root=temp.getLeftChild();
+                                this.root=act.getLeftChild();
                             }else{
-                                if (anterior.getRightChild()==temp){
-                                    anterior.setRightChild(temp.getLeftChild());
+                                if (ant.getRightChild()==act){
+                                    ant.setRightChild(act.getLeftChild());
                                 }else{
-                                    anterior.setLeftChild(temp.getLeftChild());
+                                    ant.setLeftChild(act.getLeftChild());
                                 }
                             }
                         }
