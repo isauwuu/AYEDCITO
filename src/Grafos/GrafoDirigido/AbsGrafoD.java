@@ -141,8 +141,6 @@ public abstract class AbsGrafoD extends AbsGrafo implements OperacionesGD {
             }
         }
 
-
-
         Object costo;
         for(int k=0;k<ordenGrafo;k++){
             for(int i=0;i<ordenGrafo;i++){

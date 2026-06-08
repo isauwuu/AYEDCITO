@@ -95,13 +95,12 @@ public abstract class AbsGrafoND extends AbsGrafo implements OperacionesGND{
             minVertex=-1;
 
             for (int j=0;j<getOrden();j++){
-                if ((int)listaMasCercano.devolver(j)!=(-1)
-                        && (double)listaMenorCosto.devolver(j)!=infinito){
+                if ((int)listaMasCercano.devolver(j)!=(-1) && (double)listaMenorCosto.devolver(j)!=infinito){ //si todavia no esta en el arbol y si j tiene conexion con alguna arista de este
                     currCost=(double)listaMenorCosto.devolver(j);
                     if (currCost<minCost){
                         minCost=currCost;
                         minVertex=j;
-                    }
+                    } //asigna a j como el menor para agregarlo al arbol
                 }
             }
 
@@ -111,6 +110,7 @@ public abstract class AbsGrafoND extends AbsGrafo implements OperacionesGND{
 
 
             for (int j=0;j<getOrden();j++){
+                //revisa si el nuevo nodo j abre caminos más baratos hacia los demás
                 if (j!=minVertex){
                     currCost=(double)listaMenorCosto.devolver(j);
                     newCost=(double)this.matrizCosto.devolver(minVertex, j);
