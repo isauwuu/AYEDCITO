@@ -4,7 +4,7 @@ package Arboles.Contenedores;
 
 import Arboles.Recursos.*;
 
-public abstract class ABB extends Contenedores.ArbolBinario {
+public abstract class ABB extends ArbolBinario {
 
     public abstract boolean iguales(Object nodoA, Object nodoB);
     public abstract boolean menor(Object nodoA, Object nodoB);
