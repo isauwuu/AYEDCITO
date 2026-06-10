@@ -64,6 +64,11 @@ public abstract class ArbolBinario implements operacionesArbolB {
 
 
     ///// adicional
+    public int getChildren(NodoArbolBinario nodo){
+        if(nodo == null)
+            return 0;
+        return cantNodos(nodo.getRightChild())+cantNodos(nodo.getLeftChild());
+    }
 
     public int cantHojas(NodoArbolBinario nodo){
         if (nodo==null){
